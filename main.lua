@@ -101,11 +101,25 @@ function love.update(dt)
 
   if ball:collide(paddle1) then
     ball.dx = -ball.dx
+    ball.dx = ball.dx + 15
+    ball.x = paddle1.x + paddle1.width
+    if (paddle1.dy > 0) then
+      ball.dy = ball.dy + 30
+    elseif (paddle1.dy < 0) then
+      ball.dy = ball.dy - 30
+    end
     sounds['paddle_hit']:play()
   end
 
   if ball:collide(paddle2) then
     ball.dx = -ball.dx
+    ball.dx = ball.dx - 15
+    ball.x = paddle2.x - ball.width
+    if (paddle2.dy > 0) then
+      ball.dy = ball.dy + 30
+    elseif (paddle2.dy < 0) then
+      ball.dy = ball.dy - 30
+    end
     sounds['paddle_hit']:play()
   end
 
